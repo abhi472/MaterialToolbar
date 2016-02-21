@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:id="@+id/mToolbar3"
+    android:background="@color/colorPrimary"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:src="@drawable/ic_arrow_back_white_24dp"
+        android:gravity="center"
+        android:id="@+id/back"/>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="center"
+        android:drawableLeft="@drawable/ic_search_white_24dp"
+        android:layout_weight="1" />
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:src="@drawable/ic_close_white_24dp"
+        android:gravity="center"
+        android:id="@+id/close"/>
+
+
+
+
+
+</android.support.v7.widget.Toolbar>
+

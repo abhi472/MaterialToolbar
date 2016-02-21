@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_gravity="fill_horizontal"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:orientation="horizontal">
+    <android.support.v7.widget.AppCompatImageView
+       android:layout_width="56dp"
+       android:layout_height="wrap_content"
+       android:layout_gravity="start"
+       android:src="@drawable/ic_arrow_back_white_24dp"
+       android:gravity="center"
+       android:id="@+id/back"/>
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:src="@drawable/ic_more_vert_white_24dp"
+        android:gravity="center"
+        android:id="@+id/more"/>
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:src="@drawable/ic_favorite_border_white_24dp"
+        android:gravity="center"
+    android:id="@+id/fav"/>
+
+</android.support.v7.widget.Toolbar>
+
+
