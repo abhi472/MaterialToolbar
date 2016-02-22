@@ -36,17 +36,7 @@ import java.util.zip.Inflater;
 public class Main_Activity extends AppCompatActivity implements Tab_1.OnFragmentInteractionListener, Tab_2.OnFragmentInteractionListener {
     ViewPager viewPager;
     TabLayout tabLayout;
-    LinearLayout LL;
-    RelativeLayout RL;
-    int a;
-
-    // LayoutInflater layoutInflater;
-    AppBarLayout abr, abr2;
-
     View customNav = null, customNav2 = null, customNav3 = null,customNav4=null;
-    int page;
-
-
     public static final int NUM = 2;
 
 
@@ -54,43 +44,40 @@ public class Main_Activity extends AppCompatActivity implements Tab_1.OnFragment
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_t);
-        // layoutInflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         customNav = LayoutInflater.from(this).inflate(R.layout.toolbar_2, null);
         customNav2 = LayoutInflater.from(this).inflate(R.layout.toolbar_1, null);
         customNav3 = LayoutInflater.from(this).inflate(R.layout.toolbar_3, null);
         customNav4 = LayoutInflater.from(this).inflate(R.layout.toolbar_4, null);
-        abr = (AppBarLayout) findViewById(R.id.header);
-        abr2 = (AppBarLayout) findViewById(R.id.footer);
-        abr2.addView(customNav3);
-        abr.addView(customNav);
 
-        /*the lower block implements the custom toolbar integration using getSupportActionbar*/
-        {
 
-//        getSupportActionBar().getCustomView(R.id.toolbar);
-//        getSupportActionBar().setDisplayShowHomeEnabled(false);
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
-//        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
-//
-//
-//
-//        getSupportActionBar().setCustomView(R.layout.toolbar_2);
-//        getSupportActionBar().setDisplayShowCustomEnabled(true);
-//        Toolbar parent =(Toolbar)getSupportActionBar().getCustomView() .getParent();//first get parent toolbar of current action bar
-//        parent.setContentInsetsRelative(0,0);
-//
-//        ViewGroup.LayoutParams lp = getSupportActionBar().getCustomView().getLayoutParams();
-//        lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
-//
-//        getSupportActionBar().getCustomView().setLayoutParams(lp);// set padding programmatically to 0dp
 
-//        layoutInflater=(LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE));
-//        View customNav = layoutInflater.from(this).inflate(R.layout.toolbar_2, null);
-//        //toolbar1=(Toolbar)customNav.findViewById(R.id.mToolbar);
-//        getSupportActionBar().setDisplayShowCustomEnabled(true);
-//        getSupportActionBar().setCustomView(customNav);
-            // setSupportActionBar(toolbar);
-        }
+        getSupportActionBar().setDisplayShowHomeEnabled(false);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        LayoutInflater mInflater = LayoutInflater.from(this);
+
+        View mCustomView = mInflater.inflate(R.layout.toolbar_4, null);
+        getSupportActionBar().setCustomView(mCustomView);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        Toolbar parent =(Toolbar) mCustomView.getParent();//first get parent toolbar of current action bar
+        parent.setContentInsetsAbsolute(0,0);
+        ViewGroup.LayoutParams lp = getSupportActionBar().getCustomView().getLayoutParams();
+        lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
+        lp.height = ViewGroup.LayoutParams.MATCH_PARENT;
+        getSupportActionBar().getCustomView().setLayoutParams(lp);
+
+
+        View mCustomView2=mInflater.inflate(R.layout.toolbar_2,null);
+        LinearLayout l=(LinearLayout)findViewById(R.id.LL);
+        l.addView(mCustomView2);
+        ViewGroup.LayoutParams lp2=mCustomView2.getLayoutParams();
+        lp2.width = ViewGroup.LayoutParams.MATCH_PARENT;
+        lp2.height = ViewGroup.LayoutParams.MATCH_PARENT;
+
+
+
+
+
 
 
         viewPager = (ViewPager) findViewById(R.id.tab_viewpager);
@@ -107,19 +94,19 @@ public class Main_Activity extends AppCompatActivity implements Tab_1.OnFragment
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
                 // invalidateOptionsMenu();
-                page = viewPager.getCurrentItem();
-                if (page == 1) {
-                    abr.removeView(customNav);
-                    abr.addView(customNav2);
-                    abr2.removeView(customNav3);
-                    abr2.addView(customNav4);
-                } else {
-                    abr.removeView(customNav2);
-
-                    abr.addView(customNav);
-                    abr2.removeView(customNav4);
-                    abr2.addView(customNav3);
-                }
+//                page = viewPager.getCurrentItem();
+//                if (page == 1) {                  //comment these lines if u want ot use getSupportActionBAr
+//                    abr.removeView(customNav);    //comment these lines if u want ot use getSupportActionBAr
+//                    abr.addView(customNav2);      //comment these lines if u want ot use getSupportActionBAr
+//                    abr2.removeView(customNav3);  //comment these lines if u want ot use getSupportActionBAr
+//                    abr2.addView(customNav4);     //comment these lines if u want ot use getSupportActionBAr
+//                } else {                          //comment these lines if u want ot use getSupportActionBAr
+//                    abr.removeView(customNav2);   //comment these lines if u want ot use getSupportActionBAr
+//                                                  //comment these lines if u want ot use getSupportActionBAr
+//                    abr.addView(customNav);       //comment these lines if u want ot use getSupportActionBAr
+//                    abr2.removeView(customNav4);  //comment these lines if u want ot use getSupportActionBAr
+//                    abr2.addView(customNav3);     //comment these lines if u want ot use getSupportActionBAr
+//                }                                 //comment these lines if u want ot use getSupportActionBAr
             }
 
             @Override
@@ -175,23 +162,20 @@ public class Main_Activity extends AppCompatActivity implements Tab_1.OnFragment
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_t, menu);
-
-
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_t, menu);
+//
+//
+//        return true;
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
